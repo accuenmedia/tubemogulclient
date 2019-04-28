@@ -12,6 +12,6 @@ class AdvertiserTest(Base):
         advs = loader.find()
 
         for adv in advs:
-            print adv
+            print(adv)
             
-        print "DONE"
+        print("DONE")

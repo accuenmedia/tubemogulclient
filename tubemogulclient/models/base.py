@@ -61,13 +61,13 @@ class Base(dict):
         headers['Content-Type'] = 'application/json'
 
         if method == "GET":
-            print "curl -H 'Content-Type: application/json' -H 'Authorization: {0}' '{1}'".format(headers['Authorization'], url)
+            print("curl -H 'Content-Type: application/json' -H 'Authorization: {0}' '{1}'".format(headers['Authorization'], url))
             return requests.get(url, headers=headers)
         elif method == "POST":
-            print "curl -XPOST -H 'Content-Type: application/json' -H 'Authorization: {0}' -d '{1}' '{2}'".format(headers['Authorization'], payload, url)
+            print("curl -XPOST -H 'Content-Type: application/json' -H 'Authorization: {0}' -d '{1}' '{2}'".format(headers['Authorization'], payload, url))
             return requests.post(url, headers=headers, data=payload)
         elif method == "PUT":
-            print "curl -XPUT -H 'Content-Type: application/json' -H 'Authorization: {0}' -d '{1}' '{2}'".format(headers['Authorization'], payload, url)
+            print("curl -XPUT -H 'Content-Type: application/json' -H 'Authorization: {0}' -d '{1}' '{2}'".format(headers['Authorization'], payload, url))
             return requests.put(url, headers=headers, data=payload)
         elif method == "DELETE":
             return requests.delete(url, headers=headers)
@@ -84,7 +84,7 @@ class Base(dict):
                 new_obj.import_props(result)
                 rval.append(new_obj)
         else:
-            print response.text
+            print(response.text)
             raise Exception("Bad response code")
 
         return rval
@@ -96,20 +96,20 @@ class Base(dict):
             new_obj = self.__class__(Base.connection)
             new_obj.import_props(obj)
         else:
-            print "HTTP CODE: " + str(response.status_code)
-            print response.text
+            print("HTTP CODE: " + str(response.status_code))
+            print(response.text)
             raise Exception("Bad response code")
 
         return new_obj
 
     def import_props(self, props):
-        for key, value in props.iteritems():
+        for key, value in props.items():
             self[key] = value
 
     def export_props(self):
         rval = {}
         # do this an obvious way because using __dict__ gives us params we dont need.
-        for key, value in self.iteritems():
+        for key, value in self.items():
             rval[key] = value
 
         return rval
