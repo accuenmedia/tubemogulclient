@@ -29,7 +29,7 @@ class Connection:
         headers = {}
         headers['Authorization'] = "Basic {0}".format(auth_token)
         data = "grant_type=client_credentials"
-        print "curl -XPOST -H '{0}: {1}' -d '{2}' {3}".format('Authorization', headers['Authorization'], data, auth_url)
+        print("curl -XPOST -H '{0}: {1}' -d '{2}' {3}".format('Authorization', headers['Authorization'], data, auth_url))
         response = requests.post(auth_url, headers=headers, data=data)
 
         if response is not None:

@@ -19,6 +19,6 @@ class CampaignTest(Base):
         campaigns = loader.find_by_advertiser(83239, 1000)
 
         for campaign in campaigns:
-            print campaign
+            print(campaign)
             assert campaign['campaign_id'] > 0
         

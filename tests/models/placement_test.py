@@ -19,6 +19,6 @@ class PlacementTest(Base):
         placements = loader.find_by_campaign(522549)
 
         for placement in placements:
-            print placement
+            print(placement)
             assert placement['placement_id'] > 0
         
